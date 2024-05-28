@@ -1,10 +1,10 @@
 <template>
     <v-dialog v-model="visible" max-width="600px">
         <v-card>
-            <v-card-title>Циклические связи {{ employee.fullName }}</v-card-title>
+            <v-card-title>Циклические связи {{ employee.surname }} {{ employee.name }} {{ employee.patronymic }}</v-card-title>
             <v-card-text>
                 <p v-for="cycle in cycles" :key="cycle.id">
-                    {{ cycle.employees.map(e => e.fullName).join(' добавил(а) ') }}
+                    {{ cycle.map(e => e.surname + ' ' + e.name + ' ' + e.patronymic).join(' добавил(а) ') }}
                 </p>
                 <p v-if="cycles.length === 0">Нет циклических связей</p>
             </v-card-text>
